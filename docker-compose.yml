@@ -1,20 +1,37 @@
 version: '3'
 services:
+  # nginx:
+  #   image: nginx:latest
+  #   restart: unless-stopped
+  #   container_name: ${PROJECT_SLUG}_nginx
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   networks:
+  #     - internal
+  #   volumes:
+  #     - ./backend/public:/app/backend/public
+  #     - ./frontend/public:/app/frontend/public
+  #     - ./conf/nginx/:/etc/nginx:ro
+  #     - ./logs/nginx/:/var/log/nginx
+  #     - /etc/localtime:/etc/localtime:ro
+  #   depends_on:
+  #     - frontend
+  #     - backend
+
   nginx:
-    image: nginx:latest
+    image: 'docker.io/jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     container_name: ${PROJECT_SLUG}_nginx
     ports:
-      - 80:80
-      - 443:443
+      - '80:80'
+      - '81:81'
+      - '443:443'
     networks:
       - internal
     volumes:
-      - ./backend/public:/app/backend/public
-      - ./frontend/public:/app/frontend/public
-      - ./conf/nginx/:/etc/nginx:ro
-      - ./logs/nginx/:/var/log/nginx
-      - /etc/localtime:/etc/localtime:ro
+      - ./nginx/data:/data
+      - ./nginx/letsencrypt:/etc/letsencrypt
     depends_on:
       - frontend
       - backend

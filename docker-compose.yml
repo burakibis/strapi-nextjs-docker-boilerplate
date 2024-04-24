@@ -30,8 +30,8 @@ services:
     networks:
       - internal
     volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+      - ./nginx/data:/data
+      - ./nginx/letsencrypt:/etc/letsencrypt
     depends_on:
       - frontend
       - backend

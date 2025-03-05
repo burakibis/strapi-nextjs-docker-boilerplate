@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18
 # Installing libvips-dev for sharp Compatability
 RUN apt-get update && apt-get install libvips-dev vim -y
 

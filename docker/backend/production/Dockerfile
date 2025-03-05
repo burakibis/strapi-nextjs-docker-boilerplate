@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18
 # Installing libvips-dev for sharp Compatability
 RUN apt-get update && apt-get install libvips-dev -y
 
@@ -8,9 +8,8 @@ RUN mkdir -p /app
 # Set /app as the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-# to the /app working directory
-COPY ./backend/package*.json ./backend/yarn.lock /app/
+# Copy package.json to the /app working directory
+COPY ./backend/package*.json /app/
 COPY ./.env /app/
 
 ENV PATH /app/node_modules/.bin:$PATH

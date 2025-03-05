@@ -184,3 +184,9 @@ npm-debug.log
 psd
 thumb
 sketch
+
+### IDE ###
+.vscode/
+
+### Generic files ###
+BRANCHING.md
